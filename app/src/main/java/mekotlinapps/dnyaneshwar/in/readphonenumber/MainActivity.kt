@@ -46,8 +46,10 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     alert("Please grant permissoins to accase phone number") {
                         title = "Read Phone Number"
-                        positiveButton("OK") { setPhoneNumber() }
                         negativeButton("RETRY") { requestPermssion() }
+                        onCancelled {
+                            finish()
+                        }
                     }.show()
                 }
             }

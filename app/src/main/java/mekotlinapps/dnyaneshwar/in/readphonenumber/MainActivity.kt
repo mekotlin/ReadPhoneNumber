@@ -39,17 +39,15 @@ class MainActivity : AppCompatActivity() {
 
             200 -> if (grantResults.size > 0) {
 
-                var locationAccepted = grantResults[0] === PackageManager.PERMISSION_GRANTED
+                var locationPermissions = grantResults[0] === PackageManager.PERMISSION_GRANTED
 
-                if (locationAccepted) {
+                if (locationPermissions) {
                     setPhoneNumber()
                 } else {
-                    alert("Please grant permissoins to accase phone number") {
+                    alert("Please grant permissoins to accase phone number.") {
                         title = "Read Phone Number"
                         negativeButton("RETRY") { requestPermssion() }
-                        onCancelled {
-                            finish()
-                        }
+                        onCancelled { recreate() }
                     }.show()
                 }
             }
@@ -66,6 +64,7 @@ class MainActivity : AppCompatActivity() {
 
         var teleManager: TelephonyManager = getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
         tv_phone_number.setText(teleManager.getLine1Number().toString())
+        toast("Thank You")
     }
 
 }

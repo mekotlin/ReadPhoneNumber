@@ -35,9 +35,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
 
-        when (permssoinCode) {
+        when (requestCode) {
 
-            200 -> if (grantResults.size > 0) {
+            permssoinCode -> if (grantResults.size > 0) {
 
                 var locationPermissions = grantResults[0] === PackageManager.PERMISSION_GRANTED
 
